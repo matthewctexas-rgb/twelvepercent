@@ -620,11 +620,35 @@
     </div>
   </footer>
 
-  <!-- PLATFORM LOGIC & SIMULATION SCRIPT -->
+<!-- PLATFORM LOGIC & SIMULATION SCRIPT -->
   <script>
-    // System Helpers
-    function updateVal(id, value) {
-      document.getElementById(id).innerText = value;
+    const legalContent = {
+      terms: {
+        title: "Terms of Use",
+        body: "<p>By using this website, you agree to be bound by these terms. This platform is provided 'as is' for informational purposes. You agree not to hold the creators liable for any financial losses or damages resulting from the use of this tool.</p><p>All content remains the property of the TwelvePercent Research Platform and may not be redistributed without permission.</p>"
+      },
+      disclaimer: {
+        title: "Disclaimer Policy",
+        body: "<p><strong>Financial Advice Disclosure:</strong> The content provided on this website is for educational and informational purposes only. It does not constitute financial, legal, or investment advice. All investment strategies involve risk, including the possible loss of principal.</p><p>Past performance is not indicative of future results. We assume no responsibility or liability for any errors or omissions in the content of this site. Please consult with a licensed financial advisor before making any investment decisions.</p>"
+      },
+      privacy: {
+        title: "Privacy Principles",
+        body: "<p>Your privacy is important. We do not store personal financial data on our servers. This site uses third-party services (like finance APIs and analytics) which may collect non-personally identifiable information such as browser type and IP address.</p><p>We do not sell, rent, or lease your information to third parties.</p>"
+      }
+    };
+
+    function openModal(type) {
+      const modal = document.getElementById('legal-modal');
+      const title = document.getElementById('modal-title');
+      const content = document.getElementById('modal-content');
+      
+      title.innerText = legalContent[type].title;
+      content.innerHTML = legalContent[type].body;
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('legal-modal').classList.add('hidden');
     }
 
     // Allocation updates helper
